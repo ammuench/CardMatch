@@ -26,12 +26,18 @@ export class AppComponent implements OnInit {
     this.remainingMatches = this.cards.length / 2;
   }
 
+  /**
+   * Handles click event on card, and reveals, matches, or re-flips it based on results
+   *
+   * @param {Card} card Card Object clicked
+   * @param {number} index Index of clicked card
+   */
   clickCard(card: Card, index: number) {
-    if(!card.isMatched) {
+    if (!card.isMatched) {
       clearTimeout(this.cardTimeout); // Clears any current hide-card timeouts
       if (this.cardsClicked.length >= 2) {
         this._deselectAll();
-        this._activateCard(card, index);
+        this._selectCard(card, index);
       } else if (this.cardsClicked.length === 1) {
         card.isSelected = true;
         if (this.cardsClicked[0] !== index) { // Prevent matching card to itself
@@ -50,11 +56,14 @@ export class AppComponent implements OnInit {
           }
         }
       } else {
-        this._activateCard(card, index);
-      } 
+        this._selectCard(card, index);
+      }
     }
   }
 
+  /**
+   * Creates new games and reshuffles cards on screen
+   */
   newGame() {
     this.cardsClicked = [];
     this.activeCard = undefined;
@@ -62,12 +71,21 @@ export class AppComponent implements OnInit {
     this.remainingMatches = this.cards.length / 2;
   }
 
-  private _activateCard(card:Card, index:number) {
+  /**
+   * Selects a card on the screen
+   *
+   * @param {Card} card Card Object clicked
+   * @param {number} index Index of clicked card
+   */
+  private _selectCard(card: Card, index: number) {
     card.isSelected = true;
     this.cardsClicked.push(index);
     this.activeCard = card;
   }
 
+  /**
+   * Deselects all cards currently selected on screen
+   */
   private _deselectAll() {
     for (let i = 0, len = this.cardsClicked.length; i < len; i++) {
       this.cards[this.cardsClicked[i]].isSelected = false;

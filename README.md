@@ -11,3 +11,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Live Demo!
 
 A live version of this webapp can be viewed here: [http://alexmuen.ch/cardmatch](http://alexmuen.ch/cardmatch)
+
+## Credits
+
+Background patterns from [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/)
