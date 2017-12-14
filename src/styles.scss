@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Background patterns from Subtle Patterns (https://www.toptal.com/designers/subtlepatterns/) */
+
+html, body {
+    background: url(./assets/memphis-colorful.png);
+    height: 100%;
+    overflow: hidden;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}

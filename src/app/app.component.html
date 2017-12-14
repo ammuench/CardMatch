@@ -1,3 +1,24 @@
-<h1>
-  {{title}}
-</h1>
+<div class="main container">
+    <div class="game-title col-xs-12 col-md-10 col-md-offset-1">
+      <h1>
+        Card Match!
+      </h1>
+      <p><em>(Remaining Unmatched Pairs: {{remainingMatches}})</em></p>
+    </div>
+    <div *ngIf="remainingMatches !== 0" class="row game-screen justify-content-center">
+      <div class="col-2 card-container" *ngFor="let card of cards; let i = index">
+        <div (click)="clickCard(card, i)" [ngClass]="{'facedown': !card.isSelected && !card.isMatched, 'faceup': card.isMatched}" class="card">
+          <strong class="value">{{card.value}}</strong>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="remainingMatches === 0" class="row win-screen justify-content-center">
+      <div class="win-container">
+        <h2>Congrats! You've won!</h2>
+        <p>To play another game, click the button below:</p>
+        <button class="btn" (click)="newGame()">
+          New Game
+        </button>
+      </div>
+    </div>
+</div>

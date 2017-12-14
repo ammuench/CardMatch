@@ -7,143 +7,157 @@ export class CardService {
 
   constructor() { }
 
-  private CardData: Card[] = [
+  /**
+   * Shuffles and returns an array of cards
+   * 
+   * @returns {Card[]} Array of shuffled cards
+   */
+  getCards(): Card[] {
+    return this._randomize(this._CardData);
+  }
+
+  private _CardData: Card[] = [
     {
       value: "A",
-      display: "A",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "B",
-      display: "B",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "C",
-      display: "C",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "D",
-      display: "D",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "E",
-      display: "E",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "F",
-      display: "F",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "G",
-      display: "G",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "H",
-      display: "H",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "I",
-      display: "I",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "J",
-      display: "J",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "K",
-      display: "K",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "L",
-      display: "L",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "A",
-      display: "A",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "B",
-      display: "B",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "C",
-      display: "C",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "D",
-      display: "D",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "E",
-      display: "E",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "F",
-      display: "F",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "G",
-      display: "G",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "H",
-      display: "H",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "I",
-      display: "I",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "J",
-      display: "J",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "K",
-      display: "K",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     },
     {
       value: "L",
-      display: "L",
-      isMatched: false
+      isMatched: false,
+      isSelected: false
     }
 
   ]
 
-  private randomize(array) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
-  
+  /**
+   * Shuffles and returns an array
+   * 
+   * @param {any[]} array Array to be shuffled 
+   * @returns Shuffled array
+   */
+  private _randomize(array: any[]): any[] {
+    let randomArray = JSON.parse(JSON.stringify(array)); // Makes deep copy of passed array, so selected/match state isn't saved
+    let currentIndex = randomArray.length, temporaryValue, randomIndex;
+
     while (0 !== currentIndex) {
-  
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-  
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
+      temporaryValue = randomArray[currentIndex];
+      randomArray[currentIndex] = randomArray[randomIndex];
+      randomArray[randomIndex] = temporaryValue;
     }
-  
-    return array;
+
+    return randomArray;
   }
 }
